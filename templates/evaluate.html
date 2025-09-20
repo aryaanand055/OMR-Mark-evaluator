@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluate Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-3">Evaluate Page</h1>
+                        <p class="text-center">Upload or take a photo. The image will be processed and displayed below
+                            (not saved).</p>
+                        <form method="POST" action="/evaluate" enctype="multipart/form-data" class="mb-4">
+                            <div class="mb-3">
+                                <label for="photo" class="form-label">Upload a photo:</label>
+                                <input type="file" class="form-control" id="photo" name="photo" accept="image/*"
+                                    capture="environment">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" name="action" value="basic" class="btn btn-primary">Basic
+                                    Info</button>
+                                <button type="submit" name="action" value="ocr" class="btn btn-success">Process OCR
+                                    Sheet</button>
+                            </div>
+                        </form>
+                        {% if photo_data %}
+                        <div class="text-center mb-4">
+                            <h2 class="h5">Uploaded Photo:</h2>
+                            <img src="{{ photo_data }}" alt="Uploaded Photo" class="img-fluid rounded shadow"
+                                style="max-width:400px;">
+                        </div>
+                        {% endif %}
+                        {% if result %}
+                        <div class="alert alert-info text-center">
+                            <h2 class="h6 mb-2">Processing Result:</h2>
+                            <p class="mb-0">{{ result }}</p>
+                        </div>
+                        {% endif %}
+                        {% if ocr_img %}
+                        <div class="text-center mb-4">
+                            <h2 class="h5">OCR Sheet Processed:</h2>
+                            <img src="{{ ocr_img }}" alt="OCR Processed Image" class="img-fluid rounded shadow"
+                                style="max-width:400px;">
+                        </div>
+                        {% endif %}
+                        <p class="text-muted text-center mt-3">You can either upload an image from your device or use
+                            your camera to take a new photo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
