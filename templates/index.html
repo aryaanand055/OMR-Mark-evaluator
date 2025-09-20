@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OMR Sheet Evaluator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .upload-box {
+      border: 2px dashed #007bff;
+      padding: 20px;
+      width: 400px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    input[type=file] {
+      margin: 10px 0;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>OMR Sheet Evaluator</h1>
+  <div class="upload-box">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label>Upload OMR Sheet (.jpeg):</label><br>
+      <input type="file" name="omr" accept=".jpeg,.jpg,.png" required><br><br>
+
+      <label>(Optional) Upload Answer Key (.xlsx):</label><br>
+      <input type="file" name="xlsx" accept=".xlsx"><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+    <p><i>If you already uploaded the answer key once, you don’t need to upload it again.</i></p>
+  </div>
+</body>
+</html>
